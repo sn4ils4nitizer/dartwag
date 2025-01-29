@@ -1,15 +1,19 @@
-import 'weapons.dart';
-import 'armor.dart';
+import 'package:wag_flutter_version/models/armor.dart';
+import 'package:wag_flutter_version/models/weapons.dart';
+
+import 'item.dart';
+// import 'weapons.dart';
+// import 'armor.dart';
 
 class Character {
-  String? name;
-  String? species;
-  String? faction;
-  var keywords = <String>{};
-  String? archetype;
-  List<Item> inventory = {};
+  String? _name;
+  String? _species;
+  String? _faction;
+  var _keywords = <String>{};
+  String? _archetype;
+  List<Item> _inventory = [];
 
-  var attributes = {
+  var _attributes = {
     "strength": 0,
     "toughness": 0,
     "agility": 0,
@@ -20,7 +24,7 @@ class Character {
     "speed": 0,
   };
 
-  var skills = {
+  var _skills = {
     "athletics": 0,
     "awareness": 0,
     "ballisticSKill": 0,
@@ -40,4 +44,36 @@ class Character {
     "tech": 0,
     "weaponsSkill": 0,
   };
+
+  Character(
+    this._name,
+    this._species,
+    this._faction,
+    this._keywords,
+    this._archetype,
+    this._attributes,
+    this._skills,
+  );
+
+  void addWeapons(
+      String name,
+      int value,
+      Type type,
+      Rarity rarity,
+      int dmg,
+      int rSht,
+      int rMed,
+      int rLng,
+      int ed,
+      int ap,
+      int salvo,
+      Set<String> traits,
+      Set<String> keywords) {
+    _inventory.add(Weapons(name, value, type, rarity, dmg, rSht, rMed, rLng, ed,
+        ap, salvo, traits, keywords));
+  }
+
+  void addArmor(String name, int value, int ar, Set<String> traits) {
+    _inventory.add(Armor(name, value, ar, traits));
+  }
 }
