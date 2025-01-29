@@ -76,4 +76,17 @@ class Character {
   void addArmor(String name, int value, int ar, Set<String> traits) {
     _inventory.add(Armor(name, value, ar, traits));
   }
+
+  String? get name => _name;
+  String? get species => _species;
+  String? get faction => _faction;
+  Set<String> get keywords => _keywords;
+  String? get archetype => _archetype;
+  List<Item> get inventory => _inventory;
+
+  Map<String, int> get attributes => _attributes;
+  Map<String, int> get skills => _skills;
+
+  int? getAttribute(String key) => _attributes[key];
+  int? getSkill(String key) => _skills[key];
 }

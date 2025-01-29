@@ -34,56 +34,17 @@ class Weapons extends Item {
       this._keywords)
       : super(name, value);
 
-  //Methods
-  Type getType() {
-    return type;
-  }
-
-  Rarity getRarity() {
-    return rarity;
-  }
-
-  String? getWeaponName() {
-    return getName;
-  }
-
-  int? getWeaponValue() {
-    return getValue;
-  }
-
-  int getDmg() {
-    return _dmg;
-  }
-
-  int getRSht() {
-    return _rSht;
-  }
-
-  int getRMed() {
-    return _rMed;
-  }
-
-  int getRLng() {
-    return _rLng;
-  }
-
-  int getEd() {
-    return _ed;
-  }
-
-  int getAp() {
-    return _ap;
-  }
-
-  int getSalvo() {
-    return _salvo;
-  }
-
-  Set<String> getTraits() {
-    return _traits;
-  }
-
-  Set<String> getKeywords() {
-    return _keywords;
-  }
+  String? get name => super.getName;
+  int? get value => super.getValue;
+  Type get getType => type;
+  Rarity get getRarity => rarity;
+  int get dmg => _dmg;
+  int get rSht => _rSht;
+  int get rMed => _rMed;
+  int get rLng => _rLng;
+  int get ed => _ed;
+  int get ap => _ap;
+  int get salvo => _salvo;
+  Set<String> get traits => _traits;
+  Set<String> get keywords => _keywords;
 }

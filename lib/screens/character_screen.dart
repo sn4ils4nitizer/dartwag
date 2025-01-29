@@ -25,17 +25,17 @@ class _CharacterScreenState extends State<CharacterScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Character Details
-            Text('Name: ${widget.character._name ?? "Unknown"}',
+            Text('Name: ${widget.character.name ?? "Unknown"}',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            Text('Species: ${widget.character._species ?? "Unknown"}'),
-            Text('Faction: ${widget.character._faction ?? "Unknown"}'),
-            Text('Archetype: ${widget.character._archetype ?? "Unknown"}'),
+            Text('Species: ${widget.character.species ?? "Unknown"}'),
+            Text('Faction: ${widget.character.faction ?? "Unknown"}'),
+            Text('Archetype: ${widget.character.archetype ?? "Unknown"}'),
             SizedBox(height: 20),
 
             // Attributes
             Text('Attributes:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            ...widget.character._attributes.entries.map((entry) {
+            ...widget.character.attributes.entries.map((entry) {
               return Text('${entry.key}: ${entry.value}');
             }).toList(),
             SizedBox(height: 20),
@@ -43,7 +43,7 @@ class _CharacterScreenState extends State<CharacterScreen> {
             // Skills
             Text('Skills:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            ...widget.character._skills.entries.map((entry) {
+            ...widget.character.skills.entries.map((entry) {
               return Text('${entry.key}: ${entry.value}');
             }).toList(),
             SizedBox(height: 20),
@@ -51,13 +51,13 @@ class _CharacterScreenState extends State<CharacterScreen> {
             // Inventory
             Text('Inventory:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            if (widget.character._inventory.isEmpty)
+            if (widget.character.inventory.isEmpty)
               Text('No items in inventory.'),
-            ...widget.character._inventory.map((item) {
+            ...widget.character.inventory.map((item) {
               return ListTile(
-                title: Text(item.name),
+                title: Text(item.getName ?? "unkown item"),
                 subtitle: Text(item is Weapons ? 'Weapon' : 'Armor'),
-                trailing: Text('Value: ${item.value}'),
+                trailing: Text('Value: ${item.getValue ?? 0}'),
               );
             }).toList(),
           ],
@@ -105,8 +105,8 @@ class _CharacterScreenState extends State<CharacterScreen> {
     final weapon = Weapons(
       'Plasma Gun',
       150,
-      Type.Ranged,
-      Rarity.Rare,
+      Type.ranged,
+      Rarity.rare,
       10,
       12,
       24,
@@ -120,10 +120,10 @@ class _CharacterScreenState extends State<CharacterScreen> {
 
     setState(() {
       widget.character.addWeapons(
-        weapon.name,
-        weapon.value,
-        weapon.type,
-        weapon.rarity,
+        weapon.name ?? "unknown weapon",
+        weapon.value ?? 0,
+        weapon.getType,
+        weapon.getRarity,
         weapon.dmg,
         weapon.rSht,
         weapon.rMed,
@@ -148,8 +148,8 @@ class _CharacterScreenState extends State<CharacterScreen> {
 
     setState(() {
       widget.character.addArmor(
-        armor.name,
-        armor.value,
+        armor.name ?? "unknown armor",
+        armor.value ?? 0,
         armor.ar,
         armor.traits,
       );

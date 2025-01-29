@@ -11,19 +11,8 @@ class Armor extends Item {
     this._traits,
   ) : super(name, value);
 
-  String? getArmorName() {
-    return getName;
-  }
-
-  int? getArmorValue() {
-    return getValue;
-  }
-
-  int getAr() {
-    return _ar;
-  }
-
-  Set<String> getTraits() {
-    return _traits;
-  }
+  String? get name => super.getName;
+  int? get value => super.getValue;
+  int get ar => _ar;
+  Set<String> get traits => _traits;
 }
