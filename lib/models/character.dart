@@ -89,4 +89,11 @@ class Character {
 
   int? getAttribute(String key) => _attributes[key];
   int? getSkill(String key) => _skills[key];
+
+  set faction(String? value) => _faction;
+  void addKeywords(String value) {
+    _keywords.add(value);
+  }
+
+  set archetype(String? value) => _archetype;
 }
