@@ -1,7 +1,6 @@
 import 'package:wag_flutter_version/models/armor.dart';
 import 'package:wag_flutter_version/models/weapons.dart';
-
-import 'item.dart';
+import 'package:wag_flutter_version/models/item.dart';
 // import 'weapons.dart';
 // import 'armor.dart';
 
@@ -96,4 +95,20 @@ class Character {
   }
 
   set archetype(String? value) => _archetype;
+
+  void setAttribute(String key, int value) {
+    if (_attributes.containsKey(key)) {
+      _attributes[key] = value;
+    } else {
+      throw ArgumentError("Attribute $key does not exist.");
+    }
+  }
+
+  void setSkill(String key, int value) {
+    if (_skills.containsKey(key)) {
+      _skills[key] = value;
+    } else {
+      throw ArgumentError("Skill $key does not exit.");
+    }
+  }
 }
